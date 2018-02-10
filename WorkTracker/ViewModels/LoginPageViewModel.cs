@@ -1,10 +1,11 @@
 ﻿using System.Windows.Input;
-using Prism.Mvvm;
 using Prism.Navigation;
+using WorkTracker.Base;
 using Xamarin.Forms;
+
 namespace WorkTracker.ViewModels
 {
-    public class LoginPageViewModel : BindableBase
+    public class LoginPageViewModel : BaseViewModel
     {
         INavigationService _navigationService;
 

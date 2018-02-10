@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base:BasePage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="WorkTracker.Views.ScanJobPage"
+    xmlns:base="clr-namespace:WorkTracker.Base"
+    xmlns:converters="clr-namespace:WorkTracker.Converters;assembly=WorkTracker"
+    Title="Scan Job">
+	<StackLayout
+        VerticalOptions="CenterAndExpand">
+        <StackLayout
+            VerticalOptions="CenterAndExpand"
+            IsVisible="{Binding ScanResult, Converter={x:Static converters:IsNullBooleanConverter.Instance}}">
+            <Button
+                Text="  Begin Scan  "
+                Command="{Binding ScanQRCommand}"
+                HeightRequest="80"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Style="{StaticResource PrimaryButtonStyle}" />
+        </StackLayout>
+        <StackLayout
+            VerticalOptions="CenterAndExpand"
+            IsVisible="{Binding ScanResult, Converter={x:Static converters:IsNotNullBooleanConverter.Instance}}">
+            <Label
+                Text="{Binding ScanResult}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                VerticalTextAlignment="Center" />
+            <Button
+                Text="  Confirm  "
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Style="{StaticResource PrimaryButtonStyle}" />
+        </StackLayout>
+    </StackLayout>
+</base:BasePage>

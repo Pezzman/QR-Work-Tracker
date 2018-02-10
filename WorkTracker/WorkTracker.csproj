@@ -34,6 +34,14 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ScanWorkSitePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ScanJobPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -49,6 +57,18 @@
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RootPage.cs" />
+    <Compile Include="ViewModels\ScanWorkSiteViewModel.cs" />
+    <Compile Include="ViewModels\ScanJobViewModel.cs" />
+    <Compile Include="Views\ScanWorkSitePage.xaml.cs">
+      <DependentUpon>ScanWorkSitePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\IsNullBooleanConverter.cs" />
+    <Compile Include="Converters\IsNotNullBooleanConverter.cs" />
+    <Compile Include="Views\ScanJobPage.xaml.cs">
+      <DependentUpon>ScanJobPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\BasePage.cs" />
+    <Compile Include="Base\BaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -106,6 +126,8 @@
   <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Base\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.122203\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.122203\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

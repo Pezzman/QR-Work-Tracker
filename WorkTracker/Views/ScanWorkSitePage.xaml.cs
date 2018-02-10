@@ -2,9 +2,9 @@
 
 namespace WorkTracker.Views
 {
-    public partial class HomePage : BasePage
+    public partial class ScanWorkSitePage : BasePage
     {
-        public HomePage()
+        public ScanWorkSitePage()
         {
             InitializeComponent();
         }

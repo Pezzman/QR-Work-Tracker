@@ -12,6 +12,7 @@ namespace WorkTracker
             InitializeComponent();
 
             //TODO: Uncomment login page
+
             NavigationService.NavigateAsync("RootPage/HomePage");
             //NavigationService.NavigateAsync("LoginPage");
         }
@@ -21,6 +22,8 @@ namespace WorkTracker
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
 			containerRegistry.RegisterForNavigation<RootPage>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
+            containerRegistry.RegisterForNavigation<ScanWorkSitePage, ScanWorkSiteViewModel>();
+            containerRegistry.RegisterForNavigation<ScanJobPage, ScanJobViewModel>();
         }
     }
 }

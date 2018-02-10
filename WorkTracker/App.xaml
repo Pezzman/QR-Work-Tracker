@@ -5,6 +5,14 @@
     xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
 	x:Class="WorkTracker.App">
 	<prism:PrismApplication.Resources>
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Color x:Key="BrandBlueColor">#0E62A2</Color>
+            
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource BrandBlueColor}"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
 	</prism:PrismApplication.Resources>
 </prism:PrismApplication>
