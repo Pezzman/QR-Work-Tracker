@@ -4,13 +4,13 @@ using Prism.Navigation;
 using Xamarin.Forms;
 namespace WorkTracker.ViewModels
 {
-    public class LoginViewModel : BindableBase
+    public class LoginPageViewModel : BindableBase
     {
         INavigationService _navigationService;
 
         public ICommand LoginCommand { get; set; }
 
-        public LoginViewModel(INavigationService navigationService)
+        public LoginPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
 
@@ -19,7 +19,7 @@ namespace WorkTracker.ViewModels
 
         void Login()
         {
-            _navigationService.NavigateAsync("MainPage");
+            _navigationService.NavigateAsync("RootPage/HomePage");
         }
     }
 }

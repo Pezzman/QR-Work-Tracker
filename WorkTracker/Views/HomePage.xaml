@@ -3,15 +3,32 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WorkTracker"
-    x:Class="WorkTracker.Views.MainPage">
-    <StackLayout VerticalOptions="FillAndExpand">
-        <Label
-            Text="HomePage"
-            VerticalOptions="CenterAndExpand"
-            HorizontalOptions="Center" />
-        <Label
-            Text="{Binding WelcomeText}"
-            VerticalOptions="CenterAndExpand"
-            HorizontalOptions="Center" />
-    </StackLayout>
+    x:Class="WorkTracker.Views.HomePage"
+    Title="ADM Work Tracker">
+    <Grid
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="2*" />
+            <RowDefinition
+                Height="*" />
+             <RowDefinition
+                Height="3*" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>  
+        <Image
+            HeightRequest="80"
+            Grid.Row="1"
+            Source="AdmLogo"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Aspect="AspectFit" />
+        <StackLayout Grid.Row="3">  
+        <Button Text="  Scan a QR code  " Command="{Binding ScanQRCommand}" BackgroundColor="#0E62A2" TextColor="White" HorizontalOptions="Center" HeightRequest="40"/>
+        </StackLayout>
+    </Grid>
 </ContentPage>

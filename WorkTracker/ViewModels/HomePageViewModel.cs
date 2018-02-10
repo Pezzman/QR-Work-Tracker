@@ -1,20 +1,33 @@
-﻿using System;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
+using System.Windows.Input;
+using Xamarin.Forms;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace WorkTracker.ViewModels
 {
-    public class MainPageViewModel : BindableBase
+    public class HomePageViewModel : BindableBase 
     {
-        public MainPageViewModel()
+        public ICommand ScanQRCommand { get; set; }
+
+        public HomePageViewModel()
         {
-            WelcomeText = "Hello World";
+            ScanQRCommand = new Command(async () => await ScanQRCode());
         }
 
-        string _welcomeText;
-        public string WelcomeText
+        async Task ScanQRCode()
         {
-            get { return _welcomeText; }
-            set { SetProperty(ref _welcomeText, value); }
+            #if __ANDROID__
+                // Initialize the scanner first so it can track the current context
+            MobileBarcodeScanner.Initialize (Application);
+    #endif
+
+            var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+
+            var result = await scanner.Scan();
+
+            if (result != null)
+                Debug.WriteLine("Scanned Barcode: " + result.Text);
         }
     }
 }

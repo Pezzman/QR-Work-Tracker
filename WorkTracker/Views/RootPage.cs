@@ -1,19 +1,13 @@
-﻿using System;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace WorkTracker.Views
 {
-    public class RootPage : ContentPage
+    public class RootPage : NavigationPage
     {
-        public RootPage()
+        public RootPage(Page rootPage) : base(rootPage) 
         {
-            Content = new StackLayout
-            {
-                Children = {
-                    new Label { Text = "Hello ContentPage" }
-                }
-            };
+            //BarBackgroundColor = Color.FromHex("#0E62A2");
+            //BarTextColor = Color.White;
         }
     }
 }

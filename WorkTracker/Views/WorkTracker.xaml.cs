@@ -1,10 +1,10 @@
 ﻿using Xamarin.Forms;
 
-namespace WorkTracker
+namespace WorkTracker.Views
 {
-    public partial class WorkTrackerView : ContentPage
+    public partial class HomePage : ContentPage
     {
-        public WorkTrackerView()
+        public HomePage()
         {
             InitializeComponent();
         }

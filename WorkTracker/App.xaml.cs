@@ -1,29 +1,26 @@
-﻿using Xamarin.Forms;
+﻿using Prism.Ioc;
+using Prism.Unity;
+using WorkTracker.ViewModels;
+using WorkTracker.Views;
 
 namespace WorkTracker
 {
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
-        public App()
+        protected override void OnInitialized()
         {
             InitializeComponent();
 
-            MainPage = new WorkTrackerPage();
+            //TODO: Uncomment login page
+            NavigationService.NavigateAsync("RootPage/HomePage");
+            //NavigationService.NavigateAsync("LoginPage");
         }
 
-        protected override void OnStart()
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Handle when your app starts
-        }
-
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+			containerRegistry.RegisterForNavigation<RootPage>();
+            containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
         }
     }
 }
