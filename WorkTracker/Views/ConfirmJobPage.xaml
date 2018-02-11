@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WorkTracker.Views.ConfirmJobPage"
+    xmlns:base="clr-namespace:WorkTracker.Base"
+    Title="Confirm Job">
+    <StackLayout
+        HorizontalOptions="FillAndExpand"
+        Padding="20"
+        Spacing="15">
+        <Label
+            FontSize="Large"
+            Text="Your job details" />
+        <BoxView
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="1"
+            BackgroundColor="{StaticResource BrandBlueColor}" />
+        <StackLayout>
+            <Label
+                Text="Work Site:" />
+            <Label
+                Text="{Binding ScanJobModel.WorkSite}" />
+        </StackLayout>
+        <StackLayout>
+            <Label
+                Text="Description:" />
+            <Label
+                Text="{Binding ScanJobModel.Description}" />
+        </StackLayout>
+        <StackLayout>
+            <Label
+                Text="Fix:" />
+            <Label
+                Text="{Binding ScanJobModel.Fix}" />
+        </StackLayout>
+        <StackLayout>
+            <Label
+                Text="Abbrev:" />
+            <Label
+                Text="{Binding ScanJobModel.Abbreviation}" />
+        </StackLayout>
+        <StackLayout>
+            <Label
+                Text="Description:" />
+            <Label
+                Text="{Binding ScanJobModel.Description}" />
+        </StackLayout>
+        <StackLayout>
+            <Label
+                Text="Unit:" />
+            <Label
+                Text="{Binding ScanJobModel.Unit}" />
+        </StackLayout>
+        <StackLayout>
+            <Label
+                Text="Price:" />
+            <Label
+                Text="{Binding ScanJobModel.Price, StringFormat='{0:c}'}" />
+        </StackLayout>
+        <Button
+            Style="{StaticResource PrimaryButtonStyle}"
+            Text="  Confirm  "
+            HorizontalOptions="Center"
+            Command="{Binding ConfirmCommand}" />
+    </StackLayout>
+</base:BasePage>

@@ -4,6 +4,7 @@ using Prism.Navigation;
 using WorkTracker.Base;
 using WorkTracker.Services.Interfaces;
 using Xamarin.Forms;
+using WorkTracker.Models;
 
 namespace WorkTracker.ViewModels
 {
@@ -13,6 +14,7 @@ namespace WorkTracker.ViewModels
         IBarcodeScannerService _barcodeScannerService;
 
         public ICommand ScanQRCommand { get; set; }
+        public ICommand ConfirmCommand { get; set; }
 
         public ScanJobViewModel(INavigationService navigationService, IBarcodeScannerService barcodeScannerService)
         {
@@ -20,23 +22,32 @@ namespace WorkTracker.ViewModels
             _barcodeScannerService = barcodeScannerService;
 
             ScanQRCommand = new Command(async () => await ScanQRCode());
+            ConfirmCommand = new Command(Continue);
+        }
 
-            Device.BeginInvokeOnMainThread(async () => 
-            {
-                await ScanQRCode();
-            });
+        public override void OnNavigatedTo(NavigationParameters parameters)
+        {
+            ScanJobModel = (ScanJobModel)parameters[nameof(ScanJobModel)];
         }
 
         async Task ScanQRCode()
         {
             var response = await _barcodeScannerService.ScanBarcode();
             ScanResult = response.Text;
+            ScanJobModel.Job = response.Text;
         }
 
         void Continue()
         {
-            _navigationService.NavigateAsync("ScanJobPage");
+            var param = new NavigationParameters
+            {
+                { nameof(ConfirmJobViewModel.ScanJobModel), ScanJobModel }
+            };
+
+            _navigationService.NavigateAsync("ConfirmJobPage", param);
         }
+
+        public ScanJobModel ScanJobModel { get; set; }
 
         string _scanResult;
         public string ScanResult

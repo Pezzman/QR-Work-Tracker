@@ -31,7 +31,8 @@
                 Text="  Confirm  "
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                Style="{StaticResource PrimaryButtonStyle}" />
+                Style="{StaticResource PrimaryButtonStyle}"
+                Command="{Binding ConfirmCommand}"/>
         </StackLayout>
     </StackLayout>
 </base:BasePage>

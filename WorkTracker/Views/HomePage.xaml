@@ -31,7 +31,7 @@
         <StackLayout
             Grid.Row="3">
             <Button
-                Text="  Scan a QR code  "
+                Text="  Complete a job  "
                 Command="{Binding ScanQRCommand}"
                 HorizontalOptions="Center"
                 Style="{StaticResource PrimaryButtonStyle}" />
