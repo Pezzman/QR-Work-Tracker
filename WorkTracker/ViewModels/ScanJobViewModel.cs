@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Prism.Navigation;
 using WorkTracker.Base;
+using WorkTracker.Services.Interfaces;
 using Xamarin.Forms;
 
 namespace WorkTracker.ViewModels
@@ -9,33 +10,27 @@ namespace WorkTracker.ViewModels
     public class ScanJobViewModel : BaseViewModel
     {
         INavigationService _navigationService;
+        IBarcodeScannerService _barcodeScannerService;
 
         public ICommand ScanQRCommand { get; set; }
 
-        public ScanJobViewModel(INavigationService navigationService)
+        public ScanJobViewModel(INavigationService navigationService, IBarcodeScannerService barcodeScannerService)
         {
             _navigationService = navigationService;
+            _barcodeScannerService = barcodeScannerService;
 
             ScanQRCommand = new Command(async () => await ScanQRCode());
 
-            Task.Run(async () => await ScanQRCode());
+            Device.BeginInvokeOnMainThread(async () => 
+            {
+                await ScanQRCode();
+            });
         }
 
         async Task ScanQRCode()
         {
-            #if __ANDROID__
-                                        // Initialize the scanner first so it can track the current context
-            MobileBarcodeScanner.Initialize (Application);
-            #endif
-
-            var scanner = new ZXing.Mobile.MobileBarcodeScanner();
-
-            var result = await scanner.Scan();
-
-            if (result != null)
-                ScanResult = result.Text;
-
-            ScanResult = "Example Job Name";
+            var response = await _barcodeScannerService.ScanBarcode();
+            ScanResult = response.Text;
         }
 
         void Continue()

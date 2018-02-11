@@ -69,6 +69,8 @@
     </Compile>
     <Compile Include="Base\BasePage.cs" />
     <Compile Include="Base\BaseViewModel.cs" />
+    <Compile Include="Services\BarcodeScannerService.cs" />
+    <Compile Include="Services\Interfaces\IBarcodeScannerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -104,9 +106,6 @@
     <Reference Include="Unity.ServiceLocation">
       <HintPath>..\packages\Unity.5.5.8\lib\netstandard1.0\Unity.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="zxing">
-      <HintPath>..\packages\ZXing.Net.0.16.2\lib\netstandard1.1\zxing.dll</HintPath>
-    </Reference>
     <Reference Include="ZXing.Net.Mobile.Core">
       <HintPath>..\packages\ZXing.Net.Mobile.2.3.2\lib\portable-net45+netcore45+wpa81+wp8\ZXing.Net.Mobile.Core.dll</HintPath>
     </Reference>
@@ -128,6 +127,8 @@
     <Folder Include="Views\" />
     <Folder Include="Converters\" />
     <Folder Include="Base\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.122203\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.122203\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

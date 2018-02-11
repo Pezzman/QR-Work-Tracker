@@ -2,6 +2,8 @@
 using Prism.Unity;
 using WorkTracker.ViewModels;
 using WorkTracker.Views;
+using WorkTracker.Services.Interfaces;
+using WorkTracker.Services;
 
 namespace WorkTracker
 {
@@ -24,6 +26,8 @@ namespace WorkTracker
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
             containerRegistry.RegisterForNavigation<ScanWorkSitePage, ScanWorkSiteViewModel>();
             containerRegistry.RegisterForNavigation<ScanJobPage, ScanJobViewModel>();
+
+            containerRegistry.Register<IBarcodeScannerService, BarcodeScannerService>();
         }
     }
 }
